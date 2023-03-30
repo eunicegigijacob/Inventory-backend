@@ -6,6 +6,12 @@ const productSchema = new Schema({
     required: true,
     unique: true,
   },
+
+  restockingLevel: {
+    type: Number,
+    required: true
+  }
+  
 });
 
 const product = model('product', productSchema);
