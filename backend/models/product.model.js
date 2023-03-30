@@ -8,6 +8,6 @@ const productSchema = new Schema({
   },
 });
 
-const Product = model('Product', productSchema);
+const product = model('product', productSchema);
 
-module.exports = Product;
+module.exports = product;

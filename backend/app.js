@@ -1,6 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const routeManager = require('./routes/rts');
 
 const app = express();
 
@@ -13,7 +14,7 @@ app.use(
     },
   })
 );
-
+app.use('/', routeManager);
 app.use(cookieParser());
 
 app.use(express.json());
