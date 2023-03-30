@@ -60,6 +60,7 @@ const loginUser = async (req, res) => {
     }
   } catch (error) {
     //const errors = handleErrors(error);
+    console.log(error.message);
     res.status(400).json({ message: 'errors' });
   }
 };
