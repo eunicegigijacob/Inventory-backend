@@ -7,7 +7,7 @@ const createCategory = async (req, res) => {
     if (categoryName) {
       const result = await createCategoryService({ categoryName });
       if (result) {
-        res.status(200).json({ message: 'category created' });
+        res.status(200).json({ result});
       }
     }
   } catch (error) {

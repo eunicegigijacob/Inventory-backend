@@ -2,12 +2,12 @@ const product = require("../models/product.model");
 const { createProductService } = require("../services/productService");
 
 const createProduct = async (req, res)=>{
-    const {ProductName} = req.body;
+    const {ProductName, restockingLevel} = req.body;
     try {
-        if(ProductName){
-            const result = await createProductService({ProductName})
+        if(ProductName&&restockingLevel){
+            const result = await createProductService({ProductName, restockingLevel})
             if(result){
-                res.status(200).json({message: 'product created'})
+                res.status(200).json({result})
             }
         }
     } catch (error) {
