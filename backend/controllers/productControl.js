@@ -7,7 +7,7 @@ const createProduct = async (req, res)=>{
         if(ProductName&&restockingLevel){
             const result = await createProductService({ProductName, restockingLevel})
             if(result){
-                res.status(200).json({result})
+                res.status(200).json({productName: result.ProductName, restockingLevel: result.restockingLevel})
             }
         }
     } catch (error) {
