@@ -38,19 +38,19 @@ const SideBar = () => {
               : "text-[#555555] p-[10px] text-[20px] hover:text-[#088AB2]"
           }
         >
-          <Link to="/about" className="flex items-center gap-2">
+          <Link to="/admin" className="flex items-center gap-2">
             <img src={dashboardIcon} className="App-logo" alt="logo" />
             Dashboard
           </Link>
         </li>
         <li
           className={
-            location.pathname === "/product"
+            location.pathname === "/sales"
               ? "bg-[#088AB2] p-[10px] text-[20px] rounded-l text-white"
               : "text-[#555555] p-[10px] text-[20px] hover:text-[#088AB2]"
           }
         >
-          <Link to="/product" className="flex items-center gap-2">
+          <Link to="/sales" className="flex items-center gap-2">
             <img src={sales} className="App-logo" alt="logo" />
             Sales
           </Link>

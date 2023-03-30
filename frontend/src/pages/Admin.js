@@ -10,7 +10,8 @@ const Admin = () => {
       </div>
       <main className="lg:w-9/12 w-full px-3 md:p-9 grow basis-0">
         <TopBar /> 
-        
+        <>
+        </>
       </main>
     </div>
   );
