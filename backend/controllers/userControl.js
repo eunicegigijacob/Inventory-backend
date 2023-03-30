@@ -9,7 +9,6 @@ const {
 const { createToken, maxAge } = require('../services/tokenService');
 
 const registerUser = async (req, res) => {
-  console.log(req);
   const { username, password, role } = req.body;
   try {
     if (username && password && role) {
