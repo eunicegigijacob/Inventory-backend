@@ -10,25 +10,25 @@ const { createToken, maxAge } = require('../services/tokenService');
 
 const registerUser = async (req, res) => {
   console.log(req);
-  // const { username, password, role } = req.body;
-  // try {
-  //   if (username && password && role) {
-  //     const hash = bcrypt.hashSync(password, saltRounds);
-  //     const result = await createUserService({
-  //       username,
-  //       password: hash,
-  //       role,
-  //     });
-  //     if (result) {
-  //       res.status(200).json({ message: 'user created' });
-  //     } else {
-  //       res.status(404).json({ messege: 'user not created' });
-  //     }
-  //   }
-  // } catch (error) {
-  //   const errors = handleErrors(error);
-  //   res.status(400).json({ errors });
-  // }
+  const { username, password, role } = req.body;
+  try {
+    if (username && password && role) {
+      const hash = bcrypt.hashSync(password, saltRounds);
+      const result = await createUserService({
+        username,
+        password: hash,
+        role,
+      });
+      if (result) {
+        res.status(200).json({ message: 'user created' });
+      } else {
+        res.status(404).json({ messege: 'user not created' });
+      }
+    }
+  } catch (error) {
+    //const errors = handleErrors(error);
+    res.status(400).json({ errors });
+  }
 };
 
 const loginUser = async (req, res) => {
@@ -60,8 +60,8 @@ const loginUser = async (req, res) => {
       console.log('enter user details');
     }
   } catch (error) {
-    const errors = handleErrors(error);
-    res.status(400).json({ errors });
+    //const errors = handleErrors(error);
+    res.status(400).json({ message: 'errors' });
   }
 };
 
