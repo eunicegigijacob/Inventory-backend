@@ -10,5 +10,15 @@ async function createUserService(newUser){
     }
 }
 
+async function findUserService(username){
+    try {
+        const findUser = await user.findOne(username)
+        return findUser
+    } catch (error) {
+        console.log(error)
+        return 'not found'
+    }
+}
 
-module.exports= {createUserService}
+
+module.exports= {createUserService, findUserService}
