@@ -1,12 +1,11 @@
 const express = require('express');
 const { createProduct } = require('../controllers/productControl');
-const { registerUser, loginUser } = require('../controllers/userControl')
+const { registerUser, loginUser } = require('../controllers/userControl');
 
-const routeManager = express.Router()
+const routeManager = express.Router();
 
-routeManager.post('/', registerUser);
-routeManager.post('/login', loginUser);
-routeManager.post('/addProduct', createProduct)
+routeManager.post('/auth/register', registerUser);
+routeManager.post('/auth/login', loginUser);
+routeManager.post('/addProduct', createProduct);
 
-
-module.exports= routeManager;
+module.exports = routeManager;
