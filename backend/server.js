@@ -1,20 +1,26 @@
-const express = require('express')
-const dotenv = require('dotenv')
-const cors = require('cors')
-const cookieParser = require('cookie-parser')
-const dbconnection = require('./config/connections')
-dotenv.config()
+const dotenv = require('dotenv');
+const dbconnection = require('./config/connections');
+const { app } = require('./app');
+
+dotenv.config();
 dbconnection();
-const app = express()
-const port = process.env.PORT
 
-app.use(express.json())
-app.use(cookieParser())
-app.use(cors({credentials:true, origin: function (origin, callback) {
-    console.log(`origin${origin} access granted`)
-    callback(null, true)
-}}))
+const port = process.env.PORT;
 
-app.listen(port, ()=>{
-    console.log(`app listening on ${port}`)
-})
+process.on('uncaughtException', (err) => {
+  console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
+  console.log(err.name, err.message);
+  process.exit(1);
+});
+
+const server = app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
+
+process.on('unhandledRejection', (err) => {
+  console.log('UNHANDLED REJECTION! 💥 Shutting down...');
+  console.log(err.name, err.message);
+  server.close(() => {
+    process.exit(1);
+  });
+});

@@ -14,11 +14,6 @@ const productSchema = new mongoose.Schema({
     stockNumber: {
         type: Number,
         required: true
-    },
-
-    price: {
-        type: Number,
-        required: true
     }
   });
 
