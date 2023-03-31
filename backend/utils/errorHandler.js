@@ -23,6 +23,12 @@ const handleErrors = (err) => {
     errors.password = 'That password is incorrect';
   }
 
+  //user not found for login
+
+  if (err.message === 'user not found') {
+    errors.username = 'That user does not exist';
+  }
+
   // user details error for login
 
   if(err.message === 'enter user details'){

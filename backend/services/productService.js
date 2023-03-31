@@ -12,12 +12,14 @@ async function createProductService(newProduct) {
 
 async function updateProductService(filter, newQuantity) {
   try {
-    const productUpdate = await product.findOneAndUpdate({
-      filter,
-      newQuantity,
-      new: true,
-    });
-    return productUpdate
+    const productUpdate = await product.findOneAndUpdate(
+      {
+        filter,
+        newQuantity,
+      },
+      { new: true }
+    );
+    return productUpdate;
   } catch (error) {}
 }
 
