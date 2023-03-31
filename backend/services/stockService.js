@@ -12,7 +12,7 @@ async function createStockService(newStock){
 
 async function findStockService(){
     try {
-        const findStock = await stock.find()
+        const findStock = await stock.find().sort([['createdAt', 'descending']])
         return findStock
     } catch (error) {
         console.log(error)
