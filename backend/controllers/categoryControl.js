@@ -1,5 +1,6 @@
 const category = require('../models/category.model');
 const { createCategoryService } = require('../services/categoryService');
+const { handleErrors } = require('../utils/errorHandler');
 
 const createCategory = async (req, res) => {
   const { categoryName } = req.body;
@@ -11,7 +12,7 @@ const createCategory = async (req, res) => {
       }
     }
   } catch (error) {
-    //const errors = handleErrors(error);
+    const errors = handleErrors(error);
     res.status(400).json({ errors });
   }
 };

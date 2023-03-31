@@ -10,6 +10,10 @@ const productSchema = new Schema({
   restockingLevel: {
     type: Number,
     required: true
+  },
+
+  totalQuantity:{
+    type:Number
   }
   
 });

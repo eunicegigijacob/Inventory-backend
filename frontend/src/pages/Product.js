@@ -3,7 +3,7 @@ import Sidebar from '../components/SideBar';
 import TopBar from '../components/TopBar';
 import { useState } from 'react';
 import WarningAlert from '../components/Alert';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Product = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,10 +13,10 @@ const Product = ({ data }) => {
   };
   return (
     <div className="lg:flex">
-      <div className="lg:w-2/12 ">
+      <div className="lg:w-[20%] ">
         <Sidebar />
       </div>
-      <main className="lg:w-9/12 w-full px-3 md:p-9 grow basis-0">
+      <main className="lg:w-[80%] w-full px-3 md:p-9 grow basis-0">
         <TopBar />
         <div className="my-9">
           <WarningAlert message="Budweiser is low on stock. Contact your supplier to restock." />

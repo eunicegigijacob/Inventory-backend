@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const stockSchema = new Schema(
+const checkoutStockSchema = new Schema(
   {
     stockName: {
       type: String,
@@ -15,10 +15,20 @@ const stockSchema = new Schema(
       type: Number,
       required: true,
     },
+
+    employee: {
+        type: String,
+        required: true,
+    },
+
+    employeeId: {
+        type: String,
+        required: true
+    },
   },
   { timestamps: true }
 );
 
-const stock = model('stock', stockSchema);
+const checkoutStock = model('checkoutStock', checkoutStockSchema);
 
-module.exports = stock;
+module.exports = checkoutStock;
