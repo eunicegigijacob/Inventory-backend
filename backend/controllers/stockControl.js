@@ -1,10 +1,13 @@
+const product = require('../models/product.model');
 const stock = require('../models/stock.model');
+
 const { updateProductService } = require('../services/productService');
 const { createStockService } = require('../services/stockService');
 const { handleErrors } = require('../utils/errorHandler');
 
 const createStock = async (req, res) => {
   const { stockName, category, quantity } = req.body;
+  console.log(stockName, category, quantity);
   try {
     if (stockName && category && quantity) {
       const result = await createStockService({
@@ -12,18 +15,21 @@ const createStock = async (req, res) => {
         category,
         quantity,
       });
+
       if (result) {
-        console.log(result.stockName)
-        const productResult = await updateProductService(
-          {
+        const filter = {
             ProductName: result.stockName,
-            totalQuanitiy: parseInt(totalQuantity + result.quantity),
-          },
-          { new: true }
-          
-        );
+          };
+
+        const findProduct = await product.findOne(filter)
+        const previousQuantity = parseInt(findProduct.totalQuantity + result.quantity)
+        const productid = findProduct._id
+        const update = { totalQuanitiy:  previousQuantity};
+
+        const productResult = await updateProductService(productid, previousQuantity);
+        console.log('this is update....' + productResult);
         if (productResult) {
-          console.log(productResult);
+          console.log(`++++`+ Object.keys(productResult));
           res.status(200).json({
             stockName: result.stockName,
             category: result.category,

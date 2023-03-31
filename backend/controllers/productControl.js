@@ -8,8 +8,7 @@ const createProduct = async (req, res) => {
     if (ProductName && restockingLevel) {
       const result = await createProductService({
         ProductName,
-        restockingLevel,
-        totalQuantity: parseInt(0)
+        restockingLevel
       });
       if (result) {
         res

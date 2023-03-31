@@ -10,17 +10,21 @@ async function createProductService(newProduct) {
   }
 }
 
-async function updateProductService(filter, newQuantity) {
+async function updateProductService(id, newQuantity) {
+console.log('==='+id, newQuantity)
+
   try {
-    const productUpdate = await product.findOneAndUpdate(
-      {
-        filter,
-        newQuantity,
-      },
-      { new: true }
-    );
+    const productUpdate = await product.findByIdAndUpdate(id, {totalQuantity: newQuantity}, {new: true})
+    console.log('wer'+productUpdate)
     return productUpdate;
-  } catch (error) {}
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
+async function searchProductService(product){
+
 }
 
 module.exports = { createProductService, updateProductService };

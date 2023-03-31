@@ -13,7 +13,8 @@ const productSchema = new Schema({
   },
 
   totalQuantity:{
-    type:Number
+    type:Number,
+    default: 0
   }
   
 });
