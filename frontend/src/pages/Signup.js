@@ -24,7 +24,12 @@ const Signup = () => {
           successMode: true,
         })
         navigate('/admin');
-
+      }else{
+        {swal({
+          title: "Incorrect Username or password",
+          icon: "danger",
+          dangerMode: true,
+        })}
       }
       })
       .catch((err) => {
