@@ -24,12 +24,9 @@ const createStock = async (req, res) => {
         const findProduct = await product.findOne(filter)
         const previousQuantity = parseInt(findProduct.totalQuantity + result.quantity)
         const productid = findProduct._id
-        const update = { totalQuanitiy:  previousQuantity};
 
         const productResult = await updateProductService(productid, previousQuantity);
-        console.log('this is update....' + productResult);
         if (productResult) {
-          console.log(`++++`+ Object.keys(productResult));
           res.status(200).json({
             stockName: result.stockName,
             category: result.category,

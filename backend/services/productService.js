@@ -11,11 +11,9 @@ async function createProductService(newProduct) {
 }
 
 async function updateProductService(id, newQuantity) {
-console.log('==='+id, newQuantity)
 
   try {
     const productUpdate = await product.findByIdAndUpdate(id, {totalQuantity: newQuantity}, {new: true})
-    console.log('wer'+productUpdate)
     return productUpdate;
   } catch (error) {
     console.log(error)
@@ -23,8 +21,12 @@ console.log('==='+id, newQuantity)
 }
 
 
-async function searchProductService(product){
+async function searchProductService(ProductName){
+ 
+    const productSearch = await product.find(ProductName)
+    return productSearch
+
 
 }
 
-module.exports = { createProductService, updateProductService };
+module.exports = { createProductService, updateProductService, searchProductService };

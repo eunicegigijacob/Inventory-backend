@@ -1,3 +1,4 @@
+const checkoutStock = require("../models/checkoutStock.model")
 const stock = require("../models/stock.model")
 
 async function createStockService(newStock){
@@ -12,7 +13,7 @@ async function createStockService(newStock){
 
 async function findStockService(){
     try {
-        const findStock = await stock.find().sort([['createdAt', 'descending']])
+        const findStock = await stock.find({}, {_id : 0, updatedAt: 0}).sort([['createdAt', 'descending']])
         return findStock
     } catch (error) {
         console.log(error)
@@ -20,4 +21,12 @@ async function findStockService(){
     }
 }
 
-module.exports= {createStockService, findStockService};
+async function findCheckoutService(){
+    try {
+        return await checkoutStock.find({}, {_id : 0, updatedAt: 0}).sort([['createdAt', 'descending']]) 
+    } catch (error) {
+        console.log(error.message, error)
+    }
+}
+
+module.exports= {createStockService, findStockService, findCheckoutService};
