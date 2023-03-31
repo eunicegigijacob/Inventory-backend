@@ -1,22 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../components/SideBar";
 import TopBar from "../components/TopBar";
-import { useState } from "react";
 import WarningAlert from "../components/Alert";
-import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
 
 const Outflow = ({ data }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [posts, setPosts] = useState([]);
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
+  useEffect(() => {
+    axios.get('https://jsonplaceholder.typicode.com/posts')
+      .then(response => {
+        setPosts(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
   return (
     <div className="lg:flex">
       <div className="lg:w-[20%] ">
         <Sidebar />
       </div>
-      <main className="lg:w-[80%] w-full px-3 md:p-9 grow basis-0">
+      <main className="lg:w-[80%] w-full px-3 md:p-9 grow basis-0 overflow-scroll h-screen">
         <TopBar />
         <div className="my-9">
           <WarningAlert message="Budweiser is low on stock. Contact your supplier to restock." />
@@ -116,7 +121,8 @@ const Outflow = ({ data }) => {
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                      <tr>
+                    {posts.map((post) => (
+                        <tr key={post.id}>
                         <td className="px-6 py-4 whitespace-nowra  p-2 ">
                           <div className=" flex items-center">
                             <div className="ml-4">
@@ -138,53 +144,7 @@ const Outflow = ({ data }) => {
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           10
                         </td>
-                      </tr>
-                      <tr>
-                        <td className="px-6 py-4 whitespace-nowrap  p-2 ">
-                          <div className=" flex items-center">
-                            <div className="ml-4">
-                              <div className="text-sm font-medium text-gray-900">
-                                Budweiser
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm text-gray-900">Beer</div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          10
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          12/03/2023
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          10
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="px-6 py-4 whitespace-nowrap p-2 ">
-                          <div className=" flex items-center">
-                            <div className="ml-4">
-                              <div className="text-sm font-medium text-gray-900">
-                                Budweiser
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm text-gray-900">Beer</div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          10
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          12/03/2023
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          10
-                        </td>
-                      </tr>
+                      </tr>))}
                     </tbody>
                   </table>
                 </div>
