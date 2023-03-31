@@ -1,8 +1,5 @@
 const stock = require("../models/stock.model")
 
-
-
-
 async function createStockService(newStock){
     try {
         const stockCreated = await stock.create(newStock)
@@ -13,5 +10,14 @@ async function createStockService(newStock){
     }
 }
 
+async function findStockService(){
+    try {
+        const findStock = await stock.findAll()
+        return findStock
+    } catch (error) {
+        console.log(error)
+        return'not found'
+    }
+}
 
-module.exports= {createStockService};
+module.exports= {createStockService, findStockService};

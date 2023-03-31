@@ -2,11 +2,15 @@ const user = require('../models/user.model');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv')
+dotenv.config()
 const {
   createUserService,
   findUserService,
 } = require('../services/userService');
 const { createToken, maxAge } = require('../services/tokenService');
+const secret = process.env.SECRET
+
 
 const registerUser = async (req, res) => {
   const { username, password, role } = req.body;
@@ -26,7 +30,7 @@ const registerUser = async (req, res) => {
     }
   } catch (error) {
     //const errors = handleErrors(error);
-    res.status(400).json({ errors });
+    res.status(400).json({ error });
   }
 };
 
@@ -38,30 +42,29 @@ const loginUser = async (req, res) => {
       if (result) {
         const valid = await bcrypt.compare(password, result.password);
         if (valid) {
-          const token = createToken(result._id);
+          const token = createToken({userId: result._id, role: result.role});
           res.cookie('jwt', token, {
-            httpOnly: false,
-            sameSite: 'None',
-            secure: true,
+            //httpOnly: false,
+            //sameSite: 'None',
+            //secure: true,
             maxAge: maxAge * 1000,
           });
           res.status(200).json({ user: result.role });
-          //console.log(result)
         } else {
-          res.json({ message: 'incorrect password' });
           console.log('incorrect password');
+          throw Error('incorrect password');
         }
       } else {
-        res.json({ message: 'user not found' });
+        throw Error('user not found')
       }
     } else {
-      res.json({ message: 'enter user details' });
+      throw Error('enter user details')
       console.log('enter user details');
     }
   } catch (error) {
-    //const errors = handleErrors(error);
+    const errors = handleErrors(error);
     console.log(error.message);
-    res.status(400).json({ message: 'errors' });
+    res.status(500).json({ errors });
   }
 };
 

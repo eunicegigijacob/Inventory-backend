@@ -1,7 +1,8 @@
 const dotenv = require('dotenv');
 const dbconnection = require('./config/connections');
 const { app } = require('./app');
-
+const { authMiddlewares } = require('./middleware/auth');
+//authMiddlewares
 dotenv.config();
 dbconnection();
 

@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const jwt = require('jsonwebtoken');
-const secret = process.env.SECRETE;
+const secret = process.env.SECRET;
 
 const maxAge = 3 * 24 * 60 * 60;
 
