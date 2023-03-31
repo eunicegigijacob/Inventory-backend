@@ -27,7 +27,6 @@ const Setting = (e) => {
           "categories",
           JSON.stringify([...existingCategories, categoryName])
         );
-        console.log(response.data)
         if(categoryName){
 
           swal({

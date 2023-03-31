@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Inflow = () => {
+    const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    axios.get('https://jsonplaceholder.typicode.com/posts')
+      .then(response => {
+        setPosts(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
   return (
     <div>
         <div className="flex flex-col lg:mx-9">
@@ -43,7 +55,8 @@ const Inflow = () => {
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                      <tr>
+                    {posts.slice(0, 10).map(post => (
+                      <tr  key={post.id}> 
                         <td className="px-6 py-4 whitespace-nowrap border-l-2 p-2">
                           <div className=" flex items-center">
                             <div className="ml-4">
@@ -66,29 +79,7 @@ const Inflow = () => {
                           10
                         </td>
                       </tr>
-                      <tr>
-                        <td className="px-6 py-4 whitespace-nowrap border-l-2 p-2">
-                          <div className=" flex items-center">
-                            <div className="ml-4">
-                              <div className="text-sm font-medium text-gray-900">
-                                Budweiser
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm text-gray-900">Beer</div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          10
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          12/03/2023
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          10
-                        </td>
-                      </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>
