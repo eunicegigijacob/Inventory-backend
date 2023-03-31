@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import empty_cart from '../assets/images/empty_cart.svg';
-// import googleImage from '../assets/images/google-icon.svg';
+import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -15,7 +17,21 @@ const Signup = () => {
         password,
       })
       .then((res) => {
-        console.log(res);
+        console.log(res.data.user)
+        if(res.data.user === "admin"){swal({
+          title: "Login Successfully",
+          icon: "success",
+          successMode: true,
+        })
+        navigate('/admin');
+      }
+      if(res.data.user !== "admin"){
+        swal({
+          title: "Login Successfully",
+          icon: "success",
+          successMode: true,
+        })
+      }
       })
       .catch((err) => {
         console.log(err.response.data, username, password);

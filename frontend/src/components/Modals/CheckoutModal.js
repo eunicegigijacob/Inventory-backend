@@ -18,12 +18,7 @@ const SuccessModal = ({ showModal, setShowModal, title, body }) => {
                   X
                 </button>
                <div className='text-center m-auto'>
-                 <img src={Success} alt="Success Logo" className='m-auto mb-5 mt-4'/>
-                 <p className='my-5'>You have successfully checked out 20 Budweiser </p>
-                 <div className='bg-[#2A5C99] px-5 py-2 flex mb-3 text-center m-auto lg:w-5/12'>
-                 <Link href='/' className='text-white'>Go to Product Page</Link>
-                 </div>
-                   
+                 
                </div>
               </div>
             </div>
