@@ -19,6 +19,5 @@ routeManager.post('/addStock', createStock)
 routeManager.post('/checkout', createCheckout )
 routeManager.get('/adminDashboard', inflowDashboard)
 routeManager.get('/checkout', outflow)
-routeManager
 
 module.exports = routeManager;
