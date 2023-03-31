@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import empty_cart from '../assets/images/empty_cart.svg';
-import googleImage from '../assets/images/google-icon.svg';
+// import googleImage from '../assets/images/google-icon.svg';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
