@@ -9,6 +9,7 @@ const createProduct = async (req, res) => {
       const result = await createProductService({
         ProductName,
         restockingLevel,
+        totalQuantity: parseInt(0)
       });
       if (result) {
         res
