@@ -1,6 +1,7 @@
 import React from "react";
-// import Modal from "../components/Modals/Modal";
+import Modal from "../components/Modals/Modal";
 import Success from "../components/Modals/SuccessModal";
+import AddProduct from "../components/Modals/AddProduct";
 import { useEffect, useState } from "react";
 
 
@@ -14,8 +15,9 @@ const ModalFunc = () => {
       >
         Open Modal
       </button>
+      <AddProduct showModal={showModal} setShowModal={setShowModal} title="Product Details" body="oih"/>
       {/* <Modal showModal={showModal} setShowModal={setShowModal} title="Product Details" body="oih"/> */}
-      <Success showModal={showModal} setShowModal={setShowModal} title="Product Details" body="oih"/>
+      {/* <Success showModal={showModal} setShowModal={setShowModal} title="Product Details" body="oih"/> */}
     </div>
   );
 };

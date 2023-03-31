@@ -1,9 +1,9 @@
-import React from 'react';
-import Sidebar from '../components/SideBar';
-import TopBar from '../components/TopBar';
-import { useState } from 'react';
-import WarningAlert from '../components/Alert';
-import { Link, useLocation } from 'react-router-dom';
+import React from "react";
+import Sidebar from "../components/SideBar";
+import TopBar from "../components/TopBar";
+import { useState } from "react";
+import WarningAlert from "../components/Alert";
+import { Link, useLocation } from "react-router-dom";
 
 const Product = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -126,16 +126,16 @@ const Product = ({ data }) => {
                           12/03/2023
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          <div className="relative inline-block">
+                          <div className="relative ">
                             <button
                               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
                               type="button"
                               onClick={toggleDropdown}
                             >
-                              Dropdown button
+                             Action
                               <svg
                                 className={`w-4 h-4 ml-2 transform transition-transform ${
-                                  isOpen ? 'rotate-180' : ''
+                                  isOpen ? "rotate-180" : ""
                                 }`}
                                 fill="none"
                                 stroke="currentColor"
@@ -150,53 +150,20 @@ const Product = ({ data }) => {
                                 ></path>
                               </svg>
                             </button>
-                            {isOpen && (
-                              <div className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-lg z-10">
-                                <div className="px-4 py-3">
-                                  <span className="block text-sm">
-                                    Bonnie Green
-                                  </span>
-                                  <span className="block text-sm font-medium text-gray-900 truncate">
-                                    name@flowbite.com
-                                  </span>
+                           
+                          </div>
+                          {isOpen && (
+                              <div className="absolute z-10 bg-white rounded-lg shadow-md mt-1 width-[11%]">
+                                <div>
+                                  <div className="p-2 cursor-pointer hover:bg-gray-200">
+                                  Details
+                                  </div>
+                                  <div className="p-2 cursor-pointer hover:bg-gray-200">
+                                  Check Out
+                                  </div>
                                 </div>
-                                <ul className="py-1" aria-labelledby="dropdown">
-                                  <li>
-                                    <Link
-                                      href="#"
-                                      className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2"
-                                    >
-                                      Dashboard
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link
-                                      href="#"
-                                      className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2"
-                                    >
-                                      Settings
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link
-                                      href="#"
-                                      className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2"
-                                    >
-                                      Earnings
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link
-                                      href="#"
-                                      className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2"
-                                    >
-                                      Sign out
-                                    </Link>
-                                  </li>
-                                </ul>
                               </div>
                             )}
-                          </div>
                         </td>
                       </tr>
                     </tbody>

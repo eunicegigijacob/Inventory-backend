@@ -8,6 +8,7 @@ import UserDashboard from "./pages/UserDashboard";
 import Modal from "./pages/ViewProductmodal";
 import Inflow from "./pages/Inflow";
 import Outflow from "./pages/Outflow";
+import Settings from "./pages/Settings";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/modal" element={<Modal />} />
           <Route path="/inflow" element={<Inflow />} />
           <Route path="/outflow" element={<Outflow />} />
+          <Route path="/settings" element={<Settings />} />
           <Route element={<Home />} />
         </Routes>
       </BrowserRouter>
