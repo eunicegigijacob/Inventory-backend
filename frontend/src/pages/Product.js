@@ -1,10 +1,9 @@
-import React from "react";
-import Sidebar from "../components/SideBar";
-import TopBar from "../components/TopBar";
-import { useState } from "react";
-import WarningAlert from "../components/Alert";
-import { Link, useLocation } from "react-router-dom";
-
+import React from 'react';
+import Sidebar from '../components/SideBar';
+import TopBar from '../components/TopBar';
+import { useState } from 'react';
+import WarningAlert from '../components/Alert';
+import { Link } from 'react-router-dom';
 
 const Product = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,14 +19,15 @@ const Product = ({ data }) => {
       <main className="lg:w-9/12 w-full px-3 md:p-9 grow basis-0">
         <TopBar />
         <div className="my-9">
-        <WarningAlert message="Budweiser is low on stock. Contact your supplier to restock."/>
+          <WarningAlert message="Budweiser is low on stock. Contact your supplier to restock." />
         </div>
         <div className="lg:my-9">
-           
           <div className="grid grid-cols-1 lg:grid-cols-2 mb-5">
             <div>
               <ul className="flex gap-0">
-                <li className="border-2 p-2 border-[#2A5C99] bg-[#2A5C99] text-white">All Stock</li>
+                <li className="border-2 p-2 border-[#2A5C99] bg-[#2A5C99] text-white">
+                  All Stock
+                </li>
                 <li className="border-2 p-2">Low Stock</li>
                 <li className="border-2 p-2">Out of Stock</li>
               </ul>
@@ -135,7 +135,7 @@ const Product = ({ data }) => {
                               Dropdown button
                               <svg
                                 className={`w-4 h-4 ml-2 transform transition-transform ${
-                                  isOpen ? "rotate-180" : ""
+                                  isOpen ? 'rotate-180' : ''
                                 }`}
                                 fill="none"
                                 stroke="currentColor"
