@@ -1,9 +1,9 @@
-import React from 'react';
-import Sidebar from '../components/SideBar';
-import TopBar from '../components/TopBar';
-import { useState } from 'react';
-import WarningAlert from '../components/Alert';
-import { Link, useLocation } from 'react-router-dom';
+import React from "react";
+import Sidebar from "../components/SideBar";
+import TopBar from "../components/TopBar";
+import { useState } from "react";
+import WarningAlert from "../components/Alert";
+import { Link, useLocation } from "react-router-dom";
 
 const Product = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,11 +25,21 @@ const Product = ({ data }) => {
           <div className="grid grid-cols-1 lg:grid-cols-2 mb-5">
             <div>
               <ul className="flex gap-0">
-                <li className="border-2 p-2 border-[#2A5C99] bg-[#2A5C99] text-white">
-                  All Stock
+                <li className="border-2 py-2 px-5 border-[#2A5C99] bg-[#2A5C99] text-white flex gap-2 items-center">
+                  Filter
+                  <svg
+                    width="19"
+                    height="12"
+                    viewBox="0 0 19 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7.5 12V10H11.5V12H7.5ZM3.5 7V5H15.5V7H3.5ZM0.5 2V0H18.5V2H0.5Z"
+                      fill="white"
+                    />
+                  </svg>
                 </li>
-                <li className="border-2 p-2">Low Stock</li>
-                <li className="border-2 p-2">Out of Stock</li>
               </ul>
             </div>
             <div className="flex items-center gap-6 justify-end">
@@ -95,19 +105,19 @@ const Product = ({ data }) => {
                           scope="col"
                           className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                         >
-                          Last stocked
+                          Date stocked
                         </th>
                         <th
                           scope="col"
                           className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                         >
-                          Action
+                          Total Qty in Stock
                         </th>
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
                       <tr>
-                        <td className="px-6 py-4 whitespace-nowrap border-l-2 p-2 border-[#12DB1A]">
+                        <td className="px-6 py-4 whitespace-nowra  p-2 ">
                           <div className=" flex items-center">
                             <div className="ml-4">
                               <div className="text-sm font-medium text-gray-900">
@@ -126,77 +136,53 @@ const Product = ({ data }) => {
                           12/03/2023
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          <div className="relative inline-block">
-                            <button
-                              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
-                              type="button"
-                              onClick={toggleDropdown}
-                            >
-                              Dropdown button
-                              <svg
-                                className={`w-4 h-4 ml-2 transform transition-transform ${
-                                  isOpen ? 'rotate-180' : ''
-                                }`}
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth="2"
-                                  d="M19 9l-7 7-7-7"
-                                ></path>
-                              </svg>
-                            </button>
-                            {isOpen && (
-                              <div className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-lg z-10">
-                                <div className="px-4 py-3">
-                                  <span className="block text-sm">
-                                    Bonnie Green
-                                  </span>
-                                  <span className="block text-sm font-medium text-gray-900 truncate">
-                                    name@flowbite.com
-                                  </span>
-                                </div>
-                                <ul className="py-1" aria-labelledby="dropdown">
-                                  <li>
-                                    <Link
-                                      href="#"
-                                      className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2"
-                                    >
-                                      Dashboard
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link
-                                      href="#"
-                                      className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2"
-                                    >
-                                      Settings
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link
-                                      href="#"
-                                      className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2"
-                                    >
-                                      Earnings
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link
-                                      href="#"
-                                      className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2"
-                                    >
-                                      Sign out
-                                    </Link>
-                                  </li>
-                                </ul>
+                          10
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-6 py-4 whitespace-nowrap  p-2 ">
+                          <div className=" flex items-center">
+                            <div className="ml-4">
+                              <div className="text-sm font-medium text-gray-900">
+                                Budweiser
                               </div>
-                            )}
+                            </div>
                           </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="text-sm text-gray-900">Beer</div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          10
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          12/03/2023
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          10
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-6 py-4 whitespace-nowrap p-2 ">
+                          <div className=" flex items-center">
+                            <div className="ml-4">
+                              <div className="text-sm font-medium text-gray-900">
+                                Budweiser
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="text-sm text-gray-900">Beer</div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          10
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          12/03/2023
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          10
                         </td>
                       </tr>
                     </tbody>

@@ -1,8 +1,27 @@
-import React from "react";
-import empty_cart from "../assets/images/empty_cart.svg";
-import googleImage from "../assets/images/google-icon.svg";
+import React, { useState } from 'react';
+import axios from 'axios';
+import empty_cart from '../assets/images/empty_cart.svg';
+// import googleImage from '../assets/images/google-icon.svg';
 
 const Signup = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    axios
+      .post('https://inventory-1lfe.onrender.com/auth/login', {
+        username,
+        password,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err.response.data, username, password);
+      });
+  };
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:h-screen items-center justify-center ">
       <div className="bg-[#088AB2] h-full flex justify-center items-center lg:rounded-tr-[30px] lg:rounded-br-[30px]">
@@ -16,23 +35,24 @@ const Signup = () => {
               Do not run out of stock. Keep track of your Inventory!
             </p>
           </div>
-          <form className="">
+          <form className="" onSubmit={handleLogin}>
             <div className="sm:col-span-4">
               <label
-                for="email"
+                for="username"
                 className="block text-sm font-medium leading-6 text-gray-900 mb-[15px]"
               >
-                Company’s Email
+                Username
               </label>
               <div className="mt-2">
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset  sm:max-w-full">
                   <input
                     type="text"
-                    name="email"
+                    name="username"
                     id="email"
-                    autocomplete="email"
                     className="block flex-1 border-0 bg-transparent focus:outline-transparent focus:border-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400  sm:text-sm sm:leading-6"
-                    placeholder="Input the name of your company or business"
+                    placeholder="John Doe"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                   />
                 </div>
               </div>
@@ -47,12 +67,14 @@ const Signup = () => {
               <div className="mt-2">
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset  sm:max-w-full">
                   <input
-                    type="text"
+                    type="password"
                     name="password"
                     id="password"
                     autocomplete="password"
                     className="block flex-1 border-0 bg-transparent focus:outline-transparent focus:border-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400  sm:text-sm sm:leading-6"
-                    placeholder="Input the name of your company or business"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
               </div>
@@ -66,16 +88,7 @@ const Signup = () => {
                 type="submit"
                 className="mt-[30px] text-white bg-blue-700 text-[20px] py-[15px] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-full px-5 text-center dark:bg-[#088AB2] dark:hover:bg-[#088AB2] dark:focus:ring-blue-800"
               >
-                Create Account
-              </button>
-            </div>
-            <div className="w-full">
-              <button
-                type="submit"
-                className="mt-[30px] flex item-center justify-center gap-3 text-[#0589b2] hover:text-white bg-transparent text-[20px] py-[15px] hover:bg-[#0589b2] border focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-full px-5 text-center "
-              >
-                <img src={googleImage} className="App-logo" alt="logo" />
-                Sign In with Google
+                Login
               </button>
             </div>
           </form>
