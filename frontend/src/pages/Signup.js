@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import empty_cart from '../assets/images/empty_cart.svg';
-// import googleImage from '../assets/images/google-icon.svg';
+import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
+    console.log('jkndknfkdjn')
     e.preventDefault();
     axios
       .post('https://inventory-1lfe.onrender.com/auth/login', {
@@ -15,7 +18,14 @@ const Signup = () => {
         password,
       })
       .then((res) => {
-        console.log(res);
+        if(res.data.user){swal({
+          title: "Login Successfully",
+          icon: "success",
+          successMode: true,
+        })
+        navigate('/admin');
+
+      }
       })
       .catch((err) => {
         console.log(err.response.data, username, password);

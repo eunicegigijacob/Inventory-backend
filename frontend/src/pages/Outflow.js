@@ -3,14 +3,14 @@ import Sidebar from "../components/SideBar";
 import TopBar from "../components/TopBar";
 import { useState } from "react";
 import WarningAlert from "../components/Alert";
-// import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-const Inflow = ({ data }) => {
+const Outflow = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // const toggleDropdown = () => {
-  //   setIsOpen(!isOpen);
-  // };
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <div className="lg:flex">
       <div className="lg:w-[20%] ">
@@ -197,4 +197,4 @@ const Inflow = ({ data }) => {
   );
 };
 
-export default Inflow;
+export default Outflow;
