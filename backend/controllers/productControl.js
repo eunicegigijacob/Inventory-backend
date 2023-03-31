@@ -1,5 +1,6 @@
 const product = require('../models/product.model');
 const { createProductService } = require('../services/productService');
+const { handleErrors } = require('../utils/errorHandler');
 
 const createProduct = async (req, res) => {
   const { ProductName, restockingLevel } = req.body;

@@ -9,6 +9,7 @@ const {
   findUserService,
 } = require('../services/userService');
 const { createToken, maxAge } = require('../services/tokenService');
+const { handleErrors } = require('../utils/errorHandler');
 const secret = process.env.SECRET
 
 

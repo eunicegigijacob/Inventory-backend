@@ -12,7 +12,7 @@ async function createStockService(newStock){
 
 async function findStockService(){
     try {
-        const findStock = await stock.findAll()
+        const findStock = await stock.find()
         return findStock
     } catch (error) {
         console.log(error)

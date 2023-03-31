@@ -1,5 +1,6 @@
 const checkoutStock = require("../models/checkoutStock.model");
 const { createCheckoutService } = require("../services/checkoutService");
+const { handleErrors } = require("../utils/errorHandler");
 
 
 const createCheckout = async (req, res)=>{

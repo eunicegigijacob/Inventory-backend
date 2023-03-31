@@ -1,5 +1,7 @@
 const stock = require("../models/stock.model");
 const { createStockService } = require("../services/stockService");
+const { handleErrors } = require("../utils/errorHandler");
+
 
 const createStock = async (req, res)=>{
     const {stockName, category, quantity}= req.body;
