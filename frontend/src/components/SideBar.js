@@ -6,6 +6,8 @@ import sales from "../assets/images/sales.svg";
 import logout from "../assets/images/logout.svg";
 import purchase from "../assets/images/purchaseicon.svg";
 import settingIcon from "../assets/images/settingIcon.svg";
+import inflow from "../assets/images/inflow.svg";
+import outflow from "../assets/images/outflow.svg";
 import { useEffect, useState } from "react";
 import hamburger from "../assets/images/hamburger.svg"
 
@@ -29,13 +31,13 @@ const SideBar = () => {
     <img src={hamburger} className="pl-2 w-[36px] lg:hidden my-4" alt="logo"  onClick={() => toggleShow(!show)}/>
     {show && (
     <div className="bg-white border-r-2 h-screen  pl-4 z-20 absolute md:relative w-full">
-      <div className="text-[#088AB2] p-[10px] mb-5" >STOCKUP</div>
+      <div className="text-[#2A5C99] p-[10px] mb-5" >STOCKUP</div>
       <ul className="flex gap-9 flex-col">
         <li
           className={
             location.pathname === "/admin"
-              ? "bg-[#088AB2] p-[10px] text-[20px] rounded-l text-white"
-              : "text-[#555555] p-[10px] text-[20px] hover:text-[#088AB2]"
+              ? "bg-[#2A5C99] p-[10px] text-[20px] rounded-l text-white"
+              : "text-[#555555] p-[10px] text-[20px] hover:text-[#2A5C99]"
           }
         >
           <Link to="/admin" className="flex items-center gap-2">
@@ -43,23 +45,12 @@ const SideBar = () => {
             Dashboard
           </Link>
         </li>
-        <li
-          className={
-            location.pathname === "/sales"
-              ? "bg-[#088AB2] p-[10px] text-[20px] rounded-l text-white"
-              : "text-[#555555] p-[10px] text-[20px] hover:text-[#088AB2]"
-          }
-        >
-          <Link to="/sales" className="flex items-center gap-2">
-            <img src={sales} className="App-logo" alt="logo" />
-            Sales
-          </Link>
-        </li>
+       
         <li
           className={
             location.pathname === "/product"
-              ? "bg-[#088AB2] p-[10px] text-[20px] rounded-l text-white"
-              : "text-[#555555] p-[10px] text-[20px] hover:text-[#088AB2]"
+              ? "bg-[#2A5C99] p-[10px] text-[20px] rounded-l text-white"
+              : "text-[#555555] p-[10px] text-[20px] hover:text-[#2A5C99]"
           }
         >
           <Link to="/product" className="flex items-center gap-2">
@@ -69,21 +60,33 @@ const SideBar = () => {
         </li>
         <li
           className={
-            location.pathname === "/purchase"
-              ? "bg-[#088AB2] p-[10px] text-[20px] rounded-l text-white"
-              : "text-[#555555] p-[10px] text-[20px] hover:text-[#088AB2]"
+            location.pathname === "/inflow"
+              ? "bg-[#2A5C99] p-[10px] text-[20px] rounded-l text-white"
+              : "text-[#555555] p-[10px] text-[20px] hover:text-[#2A5C99]"
           }
         >
-          <Link to="/purchase" className="flex items-center gap-2">
-            <img src={purchase} className="App-logo" alt="logo" />
-            Purchase
+          <Link to="/inflow" className="flex items-center gap-2">
+            <img src={inflow} className="App-logo" alt="logo" />
+            Inflow
+          </Link>
+        </li>
+        <li
+          className={
+            location.pathname === "/outflow"
+              ? "bg-[#2A5C99] p-[10px] text-[20px] rounded-l text-white"
+              : "text-[#555555] p-[10px] text-[20px] hover:text-[#2A5C99]"
+          }
+        >
+          <Link to="/outflow" className="flex items-center gap-2">
+            <img src={outflow} className="App-logo" alt="logo" />
+            Outflow
           </Link>
         </li>
         <li
           className={
             location.pathname === "/settings"
-              ? "bg-[#088AB2] p-[10px] text-[20px] rounded-l text-white"
-              : "text-[#555555] p-[10px] text-[20px] hover:text-[#088AB2]"
+              ? "bg-[#2A5C99] p-[10px] text-[20px] rounded-l text-white"
+              : "text-[#555555] p-[10px] text-[20px] hover:text-[#2A5C99]"
           }
         >
           <Link to="/settings" className="flex items-center gap-2">
@@ -92,7 +95,7 @@ const SideBar = () => {
           </Link>
         </li>
       </ul>
-      <div className="absolute bottom-0 flex items-center gap-2">
+      <div className="absolute bottom-0 flex items-center gap-2 mb-5">
         <img src={logout} className="App-logo" alt="logo" />
         Log out
       </div>

@@ -5,7 +5,6 @@ import { useState } from "react";
 import WarningAlert from "../components/Alert";
 import { Link, useLocation } from "react-router-dom";
 
-
 const Product = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -14,20 +13,21 @@ const Product = ({ data }) => {
   };
   return (
     <div className="lg:flex">
-      <div className="lg:w-2/12 ">
+      <div className="lg:w-[20%] ">
         <Sidebar />
       </div>
-      <main className="lg:w-9/12 w-full px-3 md:p-9 grow basis-0">
+      <main className="lg:w-[80%] w-full px-3 md:p-9 grow basis-0">
         <TopBar />
         <div className="my-9">
-        <WarningAlert message="Budweiser is low on stock. Contact your supplier to restock."/>
+          <WarningAlert message="Budweiser is low on stock. Contact your supplier to restock." />
         </div>
         <div className="lg:my-9">
-           
           <div className="grid grid-cols-1 lg:grid-cols-2 mb-5">
             <div>
               <ul className="flex gap-0">
-                <li className="border-2 p-2 border-[#2A5C99] bg-[#2A5C99] text-white">All Stock</li>
+                <li className="border-2 p-2 border-[#2A5C99] bg-[#2A5C99] text-white">
+                  All Stock
+                </li>
                 <li className="border-2 p-2">Low Stock</li>
                 <li className="border-2 p-2">Out of Stock</li>
               </ul>
