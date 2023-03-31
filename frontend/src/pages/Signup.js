@@ -10,7 +10,6 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
-    console.log('jkndknfkdjn')
     e.preventDefault();
     axios
       .post('https://inventory-1lfe.onrender.com/auth/login', {

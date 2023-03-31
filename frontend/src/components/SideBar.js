@@ -35,7 +35,7 @@ const SideBar = () => {
       />
       {show && (
         <div className="bg-white border-r-2 h-screen  pl-4 z-20 absolute md:relative w-full">
-          <div className="text-[#2A5C99] p-[10px] mb-5">STOCKUP</div>
+          <div className="text-[#2A5C99] text-[40px] p-[10px] mb-5" style={{fontFamily:'Prompt'}}>TechBolts</div>
           <ul className="flex gap-9 flex-col">
             <li
               className={
