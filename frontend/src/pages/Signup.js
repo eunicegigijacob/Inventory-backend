@@ -18,18 +18,20 @@ const Signup = () => {
         password,
       })
       .then((res) => {
-        if(res.data.user){swal({
+        console.log(res.data.user)
+        if(res.data.user === "admin"){swal({
           title: "Login Successfully",
           icon: "success",
           successMode: true,
         })
         navigate('/admin');
-      }else{
-        {swal({
-          title: "Incorrect Username or password",
-          icon: "danger",
-          dangerMode: true,
-        })}
+      }
+      if(res.data.user !== "admin"){
+        swal({
+          title: "Login Successfully",
+          icon: "success",
+          successMode: true,
+        })
       }
       })
       .catch((err) => {
