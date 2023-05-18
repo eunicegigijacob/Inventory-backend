@@ -17,21 +17,22 @@ const Signup = () => {
         password,
       })
       .then((res) => {
-        console.log(res.data.user)
-        if(res.data.user === "admin"){swal({
-          title: "Login Successfully",
-          icon: "success",
-          successMode: true,
-        })
-        navigate('/admin');
-      }
-      if(res.data.user !== "admin"){
-        swal({
-          title: "Login Successfully",
-          icon: "success",
-          successMode: true,
-        })
-      }
+        console.log(res.data.user);
+        if (res.data.user === 'Admin') {
+          swal({
+            title: 'Login Successfully',
+            icon: 'success',
+            successMode: true,
+          });
+          navigate('/admin');
+        }
+        if (res.data.user !== 'Admin') {
+          swal({
+            title: 'Login Successfully',
+            icon: 'success',
+            successMode: true,
+          });
+        }
       })
       .catch((err) => {
         console.log(err.response.data, username, password);
@@ -54,7 +55,7 @@ const Signup = () => {
           <form className="" onSubmit={handleLogin}>
             <div className="sm:col-span-4">
               <label
-                for="username"
+                htmlFor="username"
                 className="block text-sm font-medium leading-6 text-gray-900 mb-[15px]"
               >
                 Username
@@ -75,7 +76,7 @@ const Signup = () => {
             </div>
             <div className="sm:col-span-4 mt-[30px]">
               <label
-                for="password"
+                htmlFor="password"
                 className="block text-sm font-medium leading-6 text-gray-900 mb-[15px]"
               >
                 Password
@@ -95,7 +96,7 @@ const Signup = () => {
               </div>
             </div>
             <div className="flex items-center gap-3 mt-6">
-              <input type="checkbox" class="checked:bg-blue-500 ..." />
+              <input type="checkbox" className="checked:bg-blue-500 ..." />
               Remember me
             </div>
             <div className="w-full">
