@@ -4,7 +4,7 @@ import empty_cart from '../assets/images/empty_cart.svg';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 
-const Signup = () => {
+const SignIn = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -114,4 +114,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignIn;
